@@ -17,7 +17,8 @@ function MVR2 (path,number_vids,nu_frame,framerate,material,framerate_name)
         if number_vids == 1
             movie = framerate_name;
             filenaming{i}.avifile = [path movie '.avi'];
-        else movie = [framerate_name '_' num2str(i)];
+        else
+            movie = [framerate_name '_' num2str(i)];
             filenaming{i}.avifile = [path movie '.avi'];
         end
         
@@ -51,7 +52,7 @@ function MVR2 (path,number_vids,nu_frame,framerate,material,framerate_name)
         
         for j = 1:nu_tracks2
             nu_tracks = nu_tracks+1;
-            vidnum = repmat([i],[length(tracks{i}{j}(:,1)),1]);
+            vidnum = repmat(i,[length(tracks{i}{j}(:,1)),1]);
             data.tr{nu_tracks} = [tracks{i}{j},vidnum];
         end
         
