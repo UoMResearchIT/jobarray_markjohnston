@@ -1,5 +1,6 @@
 path = ['/home/mbexegc2/Dropbox (The University of Manchester)/application_support/matlab/code_enquiries/mark_johnston/'];      %set the path of videos
-number_vids=1;      %set the number of videos
+videos = dir([path, '*.avi']);
+number_vids = length(videos);      %set the number of videos
 
 nu_frame=300;         %set the number of frames for each video
 framerate=30;         %set the frame rate (FPS)
