@@ -31,7 +31,6 @@ function MVR2 (path,number_vids,nu_frame,material,framerate_name)
         
         %name the file
         disp (filenaming{i}.avifile);
-        movieObj = VideoReader(filenaming{i}.avifile);
         %settings.N = movieLength;                                        %specifies number of frames
         %settings.mintracklength = movieLength;
         [tr,tr_lst,mmov]=polyparticletracker_parallelx(filenaming{i},...
@@ -63,5 +62,5 @@ function MVR2 (path,number_vids,nu_frame,material,framerate_name)
     videodataname = [material '_' framerate_name];
     save (videodataname);
     
-    clear s j d how_many mmov tr_lst tracks tr path settings movieObj movieLength filenaming number_vids nu_tracks nu_tracks2 movie i;
+    clear s j d how_many mmov tr_lst tracks tr path settings movieLength filenaming number_vids nu_tracks nu_tracks2 movie i;
 end
