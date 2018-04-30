@@ -1,4 +1,4 @@
-function MVR2 (path,number_vids,nu_frame,framerate,material,framerate_name)
+function MVR2 (path,number_vids,nu_frame,material,framerate_name)
     
     %%%%%%%%%%%%%%%%%%%%% PolyParticleTracker settings %%%%%%%%%%%%%%%%%%%%%
     settings.lnoise = 1;                  %Smoothing lengthscale lnoise

@@ -3,7 +3,6 @@ videos = dir([path, '*.avi']);
 number_vids = length(videos);      %set the number of videos
 
 nu_frame=300;         %set the number of frames for each video
-framerate=30;         %set the frame rate (FPS)
 material='data';       %set the name of material
 
 for ndex = 1:number_vids    
@@ -12,6 +11,6 @@ for ndex = 1:number_vids
     else
         framerate_name=['HeLaM Dextran 0.5mgml overnight' num2str(ndex-1) '_t1'];
     end
-   
-	MVR2 (path,number_vids,nu_frame,framerate,material,framerate_name);
+
+    MVR2 (path,number_vids,nu_frame,material,framerate_name);
 end
