@@ -43,7 +43,6 @@ function MVR2 (path,number_vids,nu_frame,material,framerate_name)
         
     end
     %matlabpool('close');
-    data.tr=[];
     for i= 1:number_vids
         
         nu_tracks = length(data.tr);
