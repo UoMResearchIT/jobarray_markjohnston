@@ -1,4 +1,4 @@
-function MVR2 (path,number_vids,nu_frame,material,framerate_name)
+function MVR2 (path,i,number_vids,nu_frame,material,framerate_name)
     
     %%%%%%%%%%%%%%%%%%%%% PolyParticleTracker settings %%%%%%%%%%%%%%%%%%%%%
     settings.lnoise = 1;                  %Smoothing lengthscale lnoise
@@ -12,43 +12,39 @@ function MVR2 (path,number_vids,nu_frame,material,framerate_name)
     settings.roi = [1 512 1 512];
     movieLength = nu_frame;
     data.tr = cell(1,1);
-
-    for i=1:number_vids
-        
-        if number_vids == 1
-            movie = framerate_name;
-            filenaming{i}.avifile = [path movie '.avi'];
-        else
-            movie = [framerate_name '_' num2str(i)];
-            filenaming{i}.avifile = [path movie '.avi'];
-        end
-        
-        
-        %name the file
-        disp (filenaming{i}.avifile);
-        %settings.N = movieLength;                                        %specifies number of frames
-        %settings.mintracklength = movieLength;
-        [tr,tr_lst,mmov]=polyparticletracker_parallelx(filenaming{i},...
-            1:movieLength,...               %Specifies which frames are used (in this case all of them)
-            settings,...                    %The settings as defined above
-            0);                             %Interactive value - set to zero to not display movie
-        
-        %nu_tracks = length(data.tr);
-        tracks{i} = tr;
-        
-        nu_tracks = length(data.tr);
-        nu_tracks2= length(tracks{i});
-        
-        for j = 1:nu_tracks2
-            nu_tracks = nu_tracks+1;
-            vidnum = repmat(i,[length(tracks{i}{j}(:,1)),1]);
-            data.tr{nu_tracks} = [tracks{i}{j},vidnum];
-        end
-        
+    
+    
+    if number_vids == 1
+        movie = framerate_name;
+        filenaming{i}.avifile = [path movie '.avi'];
+    else
+        movie = [framerate_name '_' num2str(i)];
+        filenaming{i}.avifile = [path movie '.avi'];
     end
+    
+    
+    %name the file
+    disp (filenaming{i}.avifile);
+    %settings.N = movieLength;                                        %specifies number of frames
+    %settings.mintracklength = movieLength;
+    [tr,tr_lst,mmov]=polyparticletracker_parallelx(filenaming{i},...
+        1:movieLength,...               %Specifies which frames are used (in this case all of them)
+        settings,...                    %The settings as defined above
+        0);                             %Interactive value - set to zero to not display movie
+    
+    %nu_tracks = length(data.tr);
+    tracks{i} = tr;
+    
+    nu_tracks = length(data.tr);
+    nu_tracks2= length(tracks{i});
+    
+    for j = 1:nu_tracks2
+        nu_tracks = nu_tracks+1;
+        vidnum = repmat(i,[length(tracks{i}{j}(:,1)),1]);
+        data.tr{nu_tracks} = [tracks{i}{j},vidnum];
+    end
+    
     
     videodataname = [material '_' framerate_name];
     save (videodataname);
-    
-    clear s j d how_many mmov tr_lst tracks tr path settings movieLength filenaming number_vids nu_tracks nu_tracks2 movie i;
 end
