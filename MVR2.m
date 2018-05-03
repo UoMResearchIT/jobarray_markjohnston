@@ -1,4 +1,4 @@
-function MVR2 (path,i,nu_frame,material,framerate_name)
+function MVR2 (path,i,nu_frame,material,video_name)
     
     %%%%%%%%%%%%%%%%%%%%% PolyParticleTracker settings %%%%%%%%%%%%%%%%%%%%%
     settings.lnoise = 1;                  %Smoothing lengthscale lnoise
@@ -14,7 +14,7 @@ function MVR2 (path,i,nu_frame,material,framerate_name)
     data.tr = cell(1,1);
     
     
-    filenaming{i}.avifile = [path framerate_name '.avi'];
+    filenaming{i}.avifile = [path video_name];   
     
     %name the file
     disp (filenaming{i}.avifile);
@@ -38,6 +38,6 @@ function MVR2 (path,i,nu_frame,material,framerate_name)
     end
     
     
-    videodataname = [material '_' framerate_name];
+    videodataname = [material '_' video_name];
     save (videodataname);
 end
