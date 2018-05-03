@@ -35,7 +35,7 @@ function MVR2 (path,video_num,nu_frame,material,video_name)
         data.tr{track_num} = [tracks{video_num}{track_num},vidnum];
     end
     
-    
-    videodataname = [material '_' video_name];
-    save (videodataname);
+    video_name = replace(video_name, '.avi', '');
+    videodataname = [material '_' video_name '.mat'];
+    save(videodataname);
 end
