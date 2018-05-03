@@ -12,5 +12,5 @@ for ndex = 1:number_vids
         framerate_name=['HeLaM Dextran 0.5mgml overnight' num2str(ndex-1) '_t1'];
     end
 
-    MVR2 (path,ndex,number_vids,nu_frame,material,framerate_name);
+    MVR2 (path,ndex,nu_frame,material,framerate_name);
 end
