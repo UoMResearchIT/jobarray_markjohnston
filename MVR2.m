@@ -28,9 +28,9 @@ function MVR2 (path,video_num,nu_frame,material,video_name)
     %nu_tracks = length(data.tr);
     tracks{video_num} = tr;
     
-    nu_tracks2= length(tracks{video_num});
+    num_tracks= length(tracks{video_num});
     
-    for track_num = 1:nu_tracks2
+    for track_num = 1:num_tracks
         vidnum = repmat(video_num,[length(tracks{video_num}{track_num}(:,1)),1]);
         data.tr{track_num} = [tracks{video_num}{track_num},vidnum];
     end
