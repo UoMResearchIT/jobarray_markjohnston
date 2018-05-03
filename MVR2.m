@@ -13,21 +13,17 @@ function MVR2 (path,video_num,nu_frame,material,video_name)
     movieLength = nu_frame;
     data.tr = cell(1,1);
     
-    
     filenaming{video_num}.avifile = [path video_name];
     
     %name the file
     disp (filenaming{video_num}.avifile);
-    %settings.N = movieLength;                                        %specifies number of frames
-    %settings.mintracklength = movieLength;
+    
     [tr,tr_lst,mmov]=polyparticletracker_parallelx(filenaming{video_num},...
         1:movieLength,...               %Specifies which frames are used (in this case all of them)
         settings,...                    %The settings as defined above
         0);                             %Interactive value - set to zero to not display movie
     
-    %nu_tracks = length(data.tr);
     tracks{video_num} = tr;
-    
     num_tracks= length(tracks{video_num});
     
     for track_num = 1:num_tracks
