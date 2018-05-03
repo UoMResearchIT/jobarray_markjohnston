@@ -1,4 +1,4 @@
-function MVR2 (path,i,nu_frame,material,video_name)
+function MVR2 (path,video_num,nu_frame,material,video_name)
     
     %%%%%%%%%%%%%%%%%%%%% PolyParticleTracker settings %%%%%%%%%%%%%%%%%%%%%
     settings.lnoise = 1;                  %Smoothing lengthscale lnoise
@@ -14,27 +14,25 @@ function MVR2 (path,i,nu_frame,material,video_name)
     data.tr = cell(1,1);
     
     
-    filenaming{i}.avifile = [path video_name];   
+    filenaming{video_num}.avifile = [path video_name];
     
     %name the file
-    disp (filenaming{i}.avifile);
+    disp (filenaming{video_num}.avifile);
     %settings.N = movieLength;                                        %specifies number of frames
     %settings.mintracklength = movieLength;
-    [tr,tr_lst,mmov]=polyparticletracker_parallelx(filenaming{i},...
+    [tr,tr_lst,mmov]=polyparticletracker_parallelx(filenaming{video_num},...
         1:movieLength,...               %Specifies which frames are used (in this case all of them)
         settings,...                    %The settings as defined above
         0);                             %Interactive value - set to zero to not display movie
     
     %nu_tracks = length(data.tr);
-    tracks{i} = tr;
+    tracks{video_num} = tr;
     
-    nu_tracks = length(data.tr);
-    nu_tracks2= length(tracks{i});
+    nu_tracks2= length(tracks{video_num});
     
-    for j = 1:nu_tracks2
-        nu_tracks = nu_tracks+1;
-        vidnum = repmat(i,[length(tracks{i}{j}(:,1)),1]);
-        data.tr{nu_tracks} = [tracks{i}{j},vidnum];
+    for track_num = 1:nu_tracks2
+        vidnum = repmat(video_num,[length(tracks{video_num}{track_num}(:,1)),1]);
+        data.tr{track_num} = [tracks{video_num}{track_num},vidnum];
     end
     
     
