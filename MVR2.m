@@ -16,9 +16,9 @@ function MVR2(path, video_num)
     % Job-array variables
     % Job array arguments come in as strings so convert to number
     video_num = str2double(video_num);
-    videos = dir([path, '*.avi']);          % Get list of all videos
+    videos = dir(fullfile(path, '*.avi'));  % Get list of all videos
     video_name = videos(video_num).name;    % Get current video name
-    filenaming{video_num}.avifile = [path video_name]; % Full path to video file
+    filenaming{video_num}.avifile = fullfile(path, video_name); % Full path to video file
     
     %%%%%%%%%%%%%%%%%%%%% PolyParticleTracker settings %%%%%%%%%%%%%%%%%%%%%
     settings.lnoise = 1;                  %Smoothing lengthscale lnoise
