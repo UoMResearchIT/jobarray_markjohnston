@@ -4,6 +4,7 @@ number_vids = length(videos);      %set the number of videos
 
 
 
-for video_num = 1:number_vids    
-    MVR2 (path, video_num);
+for video_num = 1:number_vids
+    video_num_str = num2str(video_num); % Job array passes arguments as strings
+    MVR2(path, video_num_str);
 end

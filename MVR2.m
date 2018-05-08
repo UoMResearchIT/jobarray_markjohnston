@@ -1,4 +1,4 @@
-function MVR2 (path, video_num)
+function MVR2(path, video_num)
 % MVR2 Process video files using PolyParticleTracker
 % This function has been rewritten to make it suitable for calling from a
 % job array on the CSF.
@@ -14,6 +14,8 @@ function MVR2 (path, video_num)
     material = 'data';      % Set the name of material
     
     % Job-array variables
+    % Job array arguments come in as strings so convert to number
+    video_num = str2double(video_num);
     videos = dir([path, '*.avi']);          % Get list of all videos
     video_name = videos(video_num).name;    % Get current video name
     filenaming{video_num}.avifile = [path video_name]; % Full path to video file
