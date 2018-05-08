@@ -1,4 +1,12 @@
-function MVR2 (path,video_num,nu_frame,material,video_name)
+function MVR2 (path, video_num)
+    % Video settings
+    nu_frame = 300;         % Set the number of frames for each video
+    material = 'data';      % Set the name of material
+    
+    % Job-array variables
+    videos = dir([path, '*.avi']);          % Get list of all videos
+    video_name = videos(video_num).name;    % Get current video name
+    filenaming{video_num}.avifile = [path video_name]; % Full path to video file
     
     %%%%%%%%%%%%%%%%%%%%% PolyParticleTracker settings %%%%%%%%%%%%%%%%%%%%%
     settings.lnoise = 1;                  %Smoothing lengthscale lnoise
@@ -13,7 +21,6 @@ function MVR2 (path,video_num,nu_frame,material,video_name)
     movieLength = nu_frame;
     data.tr = cell(1,1);
     
-    filenaming{video_num}.avifile = [path video_name];
     
     %name the file
     disp (filenaming{video_num}.avifile);
