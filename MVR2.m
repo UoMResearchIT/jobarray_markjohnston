@@ -1,4 +1,14 @@
 function MVR2 (path, video_num)
+% MVR2 Process video files using PolyParticleTracker
+% This function has been rewritten to make it suitable for calling from a
+% job array on the CSF.
+% Inputs:
+%   path: directory containing the video files to process
+%   video_num: which video number to process (This is the SGE_TASK_ID
+%   when using a job array).
+% Requires:
+%   Poly particle tracker toolbox
+
     % Video settings
     nu_frame = 300;         % Set the number of frames for each video
     material = 'data';      % Set the name of material
