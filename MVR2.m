@@ -18,7 +18,7 @@ function MVR2(path, video_num)
     video_num = str2double(video_num);
     videos = dir(fullfile(path, '*.avi'));  % Get list of all videos
     video_name = videos(video_num).name;    % Get current video name
-    filenaming{video_num}.avifile = fullfile(path, video_name); % Full path to video file
+    filenaming.avifile = fullfile(path, video_name); % Full path to video file
     
     %%%%%%%%%%%%%%%%%%%%% PolyParticleTracker settings %%%%%%%%%%%%%%%%%%%%%
     settings.lnoise = 1;                  %Smoothing lengthscale lnoise
@@ -35,9 +35,9 @@ function MVR2(path, video_num)
     
     
     %name the file
-    disp (filenaming{video_num}.avifile);
+    disp (filenaming.avifile);
     
-    [tr,tr_lst,mmov]=polyparticletracker_parallelx(filenaming{video_num},...
+    [tr,tr_lst,mmov]=polyparticletracker_parallelx(filenaming,...
         1:movieLength,...               %Specifies which frames are used (in this case all of them)
         settings,...                    %The settings as defined above
         0);                             %Interactive value - set to zero to not display movie
