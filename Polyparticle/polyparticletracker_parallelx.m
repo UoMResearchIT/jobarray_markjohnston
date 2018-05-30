@@ -106,7 +106,6 @@ tic
 limmult=1.6; %multiplies size of box around particle for fitting -- not a sensitive parameter - should be slightly over one... say 1.6
 maskmult=1; %multiplies fall-off of weighting exponential in fine fit  -- should be about 1.0
 improverthresh=0.5; %repeat centre refinement cycle if x or y correction is greater than improverthresh
-interactive=1;
 
 % smoothing lengthscale lnoise
 if ~ismember('lnoise',fieldnames(settings));  lnoise=1; else lnoise=settings.lnoise; end
